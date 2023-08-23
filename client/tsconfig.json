@@ -22,6 +22,15 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/register/page.jsx",
+    "components/auth/registerForm/main/index.jsx",
+    "components/auth/registerForm/ctrl/index.jsx",
+    "components/auth/registerForm/ctrl/btn/index.jsx"
+  ],
   "exclude": ["node_modules"]
 }
