@@ -27,7 +27,7 @@ const StickyHeader = () => {
   }, [])
 
   return (
-    <div className='flex flex-col mx-14  '>
+    <div className='flex flex-col mx-64  '>
       {/* Menu */}
       <div className='px-5'>
         <div className='flex justify-between w-full pt-10'>
@@ -48,7 +48,7 @@ const StickyHeader = () => {
         </div>
       </div>
       <div
-        className={`fixed px-[15px] left-5 right-5 mx-8 flex justify-between items-center mt-4 bg-[#0d1014ca] backdrop-blur-[9.5px] order-solid border-[1px] border-[#C1C1C14D] rounded-2xl py-7 transition-all ${
+        className={`fixed px-[15px] left-5 right-5 mx-56 flex justify-between items-center mt-4 bg-[#0d1014ca] backdrop-blur-[9.5px] order-solid border-[1px] border-[#C1C1C14D] rounded-2xl py-7 transition-all ${
           isSticky ? ' top-0 left-0 ' : 'top-16  '
         }`}
       >
