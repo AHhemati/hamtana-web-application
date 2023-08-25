@@ -35,13 +35,19 @@ app.get("/", (req, res) => {
   });
 });
 
+// ROUTES
+const UserRoutes = require("./routes/UserRoutes");
+
+// ROUTES MIDDLEWARE
+app.use("/api", UserRoutes);
+
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 
-mongoose.connect(DB_URL)
+mongoose
+  .connect(DB_URL)
   .then((d) => {
-
-    console.log('ok');
+    console.log("ok");
     app.listen(PORT);
   })
   .catch((err) => console.log(err));
