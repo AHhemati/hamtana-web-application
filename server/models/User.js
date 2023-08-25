@@ -63,7 +63,7 @@ const UserSchema = new mongoose.Schema({
     type: Number,
   },
 
-  userActive: {
+  userIsActive: {
     required: true,
     type: Boolean,
     default: false,

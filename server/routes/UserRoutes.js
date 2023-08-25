@@ -56,11 +56,33 @@ router.post(
       });
     }),
   ],
-  UserCtrl.updateuser
+  UserCtrl.updateUser
 );
 
-router.post("/delete-user/:id", UserCtrl.deleteuser);
-router.get("/get-user-by-id/:id", UserCtrl.getOneuserById);
-router.post("/search-user", UserCtrl.Searchusers);
+router.post(
+  "/update-mini-user/:id",
+  [
+    check(
+      "username",
+      "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
+    ).isLength({ min: 8, max: 20 }),
+
+    check(
+      "displayname",
+      "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
+    ).isLength({ min: 8, max: 20 }),
+
+    check("password", "talkjfaldfj a").isLength({ min: 8, max: 20 }),
+  ],
+  UserCtrl.updateUser
+);
+
+router.post("/delete-user/:id", UserCtrl.deleteUser);
+router.get("/get-user-by-id/:id", UserCtrl.getOneUserById);
+router.post(
+  "/search-user",
+  [check("email", "فرمت ایمیل اشتباه است").isEmail()],
+  UserCtrl.searchUsers
+);
 
 module.exports = router;
