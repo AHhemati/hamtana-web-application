@@ -1,0 +1,93 @@
+const mongoose = require("mongoose");
+const UserSchema = new mongoose.Schema({
+  ursername: {
+    required: true,
+    type: String,
+    unique: true,
+  },
+
+  displayname: {
+    required: true,
+    type: String,
+  },
+
+  email: {
+    required: true,
+    type: String,
+    unique: true,
+  },
+
+  password: {
+    required: true,
+    type: String,
+  },
+
+  favoriteProducts: {
+    required: true,
+    type: Array,
+    default: [],
+  },
+
+  userProducts: {
+    required: true,
+    type: Array,
+    default: [],
+  },
+
+  comments: {
+    required: true,
+    type: Array,
+    default: [],
+  },
+
+  payments: {
+    required: true,
+    type: Array,
+    default: [],
+  },
+
+  cart: {
+    required: true,
+    type: Array,
+    default: [],
+  },
+
+  viewed: {
+    required: true,
+    type: Boolean,
+    default: false,
+  },
+
+  activeCode: {
+    required: true,
+    type: Number,
+  },
+
+  userActive: {
+    required: true,
+    type: Boolean,
+    default: false,
+  },
+
+  emailSend: {
+    required: true,
+    type: Boolean,
+    default: true,
+  },
+
+  createdAt: {
+    type: String,
+    default: new Date().toLocaleDateString("fa-IR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+  },
+
+  updatedAt: {
+    default: new Date().toLocaleDateString("fa-IR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+  },
+});
+module.exports = mongoose.model("User", UserSchema);
