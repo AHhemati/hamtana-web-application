@@ -31,16 +31,17 @@ app.use(hpp());
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    message: "Hamtana's server",
+    msg: "Hamtana's server",
   });
 });
 
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 
-mongoose
-  .connect(DB_URL)
+mongoose.connect(DB_URL)
   .then((d) => {
+
+    console.log('ok');
     app.listen(PORT);
   })
   .catch((err) => console.log(err));
