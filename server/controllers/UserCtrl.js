@@ -134,12 +134,10 @@ const registerUser = async (req, res) => {
         });
       }
     }
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
   }
-}
-catch (err) {
-  console.log(err);
-  res.status(400).json(err);
-}
 };
 module.exports.registerUser = registerUser;
 
