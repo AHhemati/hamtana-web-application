@@ -1,14 +1,13 @@
 const User = require("../models/User");
-const user = require("../models/User");
 const {
   validationResult
 } = require("express-validator");
-const {
-  post
-} = require("../routes/UserRoutes");
 
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+
+
 const getAllUsers = async (req, res) => {
   try {
     if (req.query.pn && req.query.pgn) {
@@ -107,9 +106,18 @@ const registerUser = async (req, res) => {
             });
             newUser.save()
               .then(d => {
+                // MAKING AUTH COOKIE 
+                const token = jwt.sign({
+                  _id: newUser._id,
+                  username: newUser.username
+                }.process.env.TOKEN_SECRET);
 
-
-
+                // EMAIL TO USER ACCOIUNT 
+                const MAIL_HOST = process.env.MAIL_HOST
+                const MAIL_PORT = process.env.MAIL_PORT
+                const MAIL_USER = process.env.MAIL_USER
+                const MAIL_PASSWORD = process.env.MAIL_PASSWORD
+                const MAIL_MAIL_ADDRESS = process.env.MAIL_MAIL_ADDRESS
 
 
 
