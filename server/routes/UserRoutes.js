@@ -6,21 +6,50 @@ const UserCtrl = require("../controllers/UserCtrl");
 const User = require("../models/User");
 
 router.get("/users", UserCtrl.getAllUsers);
-// router.post("/new-user", [
-//   check("title", "تعداد کارتر عنوا").isLength({ min: 8 }),
-//   check("published", "talkjfaldfj a").isBoolean(),
-//   check("relatedusers", "afafasfasf").isArray(),
-//   check("tags", "adfafafaf").isArray(),
-//   check("slug", "afafafafaf").custom((value) => {
-//     return User.find({
-//       slug: value,
-//     }).then((user) => {
-//       if (user.length > 0) {
-//         throw "لطفا اسلاگ دیگری انتخاب کنید ...";
-//       }
-//     });
-//   }),
-// ],UserCtrl.newsuer);
+
+router.post(
+  "/new-user",
+  [
+    check(
+      "username",
+      "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
+    ).isLength({ min: 8, max: 20 }),
+
+    check(
+      "displayname",
+      "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
+    ).isLength({ min: 8, max: 20 }),
+
+    check("password", "talkjfaldfj a").isLength({ min: 8, max: 20 }),
+    check("email", "talkjfaldfj a").isEmail(),
+    check("email", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
+      return User.find({
+        email: value,
+      }).then((user) => {
+        if (user.length > 0) {
+          throw "لطفا ایمیل دیگری انتخاب کنید ...";
+        }
+      });
+    }),
+    check("username", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
+      return User.find({
+        ursername: value,
+      }).then((user) => {
+        if (user.length > 0) {
+          throw "لطفا ایمیل دیگری انتخاب کنید ...";
+        }
+      });
+    }),
+    check("favoriteProducts", "فرمت یکس تز وردی ها ").isArray(),
+    check("userProducts", "talkjfaldfj a").isArray(),
+    check("comments", "talkjfaldfj a").isArray(),
+    check("payments", "talkjfaldfj a").isArray(),
+    check("cart", "talkjfaldfj a").isArray(),
+    check("viewed", "talkjfaldfj a").isBoolean(),
+    check("userIsActive", "talkjfaldfj a").isBoolean(),
+  ],
+  UserCtrl.registerUser
+);
 
 router.post(
   "/update-user/:id",
