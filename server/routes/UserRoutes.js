@@ -43,7 +43,7 @@ router.post(
         }
       });
     }),
-    check("username", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
+    check("username", "لطفا نام کاربری دیگری انتخاب کنید ...").custom((value) => {
       return User.find({
         ursername: value,
       }).then((user) => {

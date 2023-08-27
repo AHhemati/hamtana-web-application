@@ -84,6 +84,7 @@ const UserSchema = new mongoose.Schema({
   },
 
   updatedAt: {
+    type: String,
     default: new Date().toLocaleDateString("fa-IR", {
       hour: "2-digit",
       minute: "2-digit",

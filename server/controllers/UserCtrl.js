@@ -109,7 +109,7 @@ const registerUser = async (req, res) => {
                 // MAKING AUTH COOKIE 
                 const token = jwt.sign({
                   _id: newUser._id,
-                  username: newUser.username
+                  username: newUser.ursername
                 }.process.env.TOKEN_SECRET);
 
                 // EMAIL TO USER ACCOIUNT 
@@ -133,8 +133,8 @@ const registerUser = async (req, res) => {
                 transporter.sendMail({
                     from: MAIL_MAIN_ADDRESS,
                     to: newUser.email,
-                    sunject: "اخراز هویت  همتانا ",
-                    html: `<html><head><style>strong{color: rgb(0, 119, 255);}h1{font-size: large;}</style></head><body><h1>کد احراز هویت : <strong>${userActiveCode}</strong></h1></body></html>`
+                    sunject: "احراز هویت  همتانا ",
+                    html: `<html><head><style>strong{color: rgb(0, 119, 255);}h1{font-size: large;}</style></head><body><h1>کد اهراز هویت : <strong>${userActiveCode}</strong></h1></body></html>`
                   })
                   .then(d => {
                     res.status(200).json({
@@ -151,23 +151,23 @@ const registerUser = async (req, res) => {
                   });
 
               })
-              .catch(e => {
+              .catch(err => {
                 console.log(err)
                 res.status(400).json(err)
               })
           } else {
             res.status(422).json({
-              msg: "as;please enter another username "
+              msg: "لطفا نام کاربری دیگری انتخاب کنید ..."
             });
           }
         } else {
           res.status(422).json({
-            msg: "as;please enter another username "
+            msg: "لطفا ایمیل دیگری انتخاب کنید ..."
           });
         }
       } else {
         res.status(422).json({
-          msg: "as;lkdjfadkjfa;lsdkjfdj"
+          msg: "تکرار رمز عبور اشتباه هست"
         });
       }
     }
