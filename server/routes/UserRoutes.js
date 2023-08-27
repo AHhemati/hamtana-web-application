@@ -29,11 +29,11 @@ router.post(
       max: 20
     }),
 
-    check("password", "talkjfaldfj a").isLength({
+    check("password", "تعداد کارتر رمز عبور باید بیشتر از 8 تا 20 کارکتر باشد  ").isLength({
       min: 8,
       max: 20
     }),
-    check("email", "talkjfaldfj a").isEmail(),
+    check("email", "لطفا ایمیل دیگری انتخاب کنید ...").isEmail(),
     check("email", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
       return User.find({
         email: value,
@@ -43,7 +43,7 @@ router.post(
         }
       });
     }),
-    check("username", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
+    check("username", "لطفا نام کاربری دیگری انتخاب کنید ...").custom((value) => {
       return User.find({
         ursername: value,
       }).then((user) => {
@@ -52,13 +52,13 @@ router.post(
         }
       });
     }),
-    check("favoriteProducts", "فرمت یکس تز وردی ها ").isArray(),
-    check("userProducts", "talkjfaldfj a").isArray(),
-    check("comments", "talkjfaldfj a").isArray(),
-    check("payments", "talkjfaldfj a").isArray(),
-    check("cart", "talkjfaldfj a").isArray(),
-    check("viewed", "talkjfaldfj a").isBoolean(),
-    check("userIsActive", "talkjfaldfj a").isBoolean(),
+    check("favoriteProducts", "فرمت یکی از وردی های ثبت نام کاربر اشتباه است ").isArray(),
+    check("userProducts", "فرمت یکی از وردی های ثبت نام کاربر اشتباه است ").isArray(),
+    check("comments", "فرمت یکی از وردی های ثبت نام کاربر اشتباه است ").isArray(),
+    check("payments", "فرمت یکی از وردی های ثبت نام کاربر اشتباه است ").isArray(),
+    check("cart", "فرمت یکی از وردی های ثبت نام کاربر اشتباه است ").isArray(),
+    check("viewed", "فرمت یکی از وردی های ثبت نام کاربر اشتباه است ").isBoolean(),
+    check("userIsActive", "فرمت یکی از وردی های ثبت نام کاربر اشتباه است ").isBoolean(),
   ],
   UserCtrl.registerUser
 );
@@ -82,7 +82,7 @@ router.post(
       max: 20
     }),
 
-    check("password", "تعداد کارتر رمز عبور باید بیشتر از 8 تا 20 کارکتر باشد  a").isLength({
+    check("password", "تعداد کارتر رمز عبور باید بیشتر از 8 تا 20 کارکتر باشد  ").isLength({
       min: 8,
       max: 20
     }),
