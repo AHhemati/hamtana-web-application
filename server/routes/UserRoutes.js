@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express();
-const { check, validationResult } = require("express-validator");
+const {
+  check,
+  validationResult
+} = require("express-validator");
 
 const UserCtrl = require("../controllers/UserCtrl");
 const User = require("../models/User");
@@ -13,14 +16,23 @@ router.post(
     check(
       "username",
       "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
-    ).isLength({ min: 8, max: 20 }),
+    ).isLength({
+      min: 8,
+      max: 20
+    }),
 
     check(
       "displayname",
       "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
-    ).isLength({ min: 8, max: 20 }),
+    ).isLength({
+      min: 8,
+      max: 20
+    }),
 
-    check("password", "talkjfaldfj a").isLength({ min: 8, max: 20 }),
+    check("password", "talkjfaldfj a").isLength({
+      min: 8,
+      max: 20
+    }),
     check("email", "talkjfaldfj a").isEmail(),
     check("email", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
       return User.find({
@@ -57,15 +69,24 @@ router.post(
     check(
       "username",
       "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
-    ).isLength({ min: 8, max: 20 }),
+    ).isLength({
+      min: 8,
+      max: 20
+    }),
 
     check(
       "displayname",
-      "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
-    ).isLength({ min: 8, max: 20 }),
+      "تعداد کارتر نام نمایشی باید بیشتر از 8 تا 20 کارکتر باشد "
+    ).isLength({
+      min: 8,
+      max: 20
+    }),
 
-    check("password", "talkjfaldfj a").isLength({ min: 8, max: 20 }),
-    check("email", "talkjfaldfj a").isEmail(),
+    check("password", "تعداد کارتر رمز عبور باید بیشتر از 8 تا 20 کارکتر باشد  a").isLength({
+      min: 8,
+      max: 20
+    }),
+    check("email", " ").isEmail(),
     check("email", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
       return User.find({
         email: value,
@@ -75,7 +96,7 @@ router.post(
         }
       });
     }),
-    check("username", "لطفا ایمیل دیگری انتخاب کنید ...").custom((value) => {
+    check("username", "لطفا نام کاربری دیگری انتخاب کنید ...").custom((value) => {
       return User.find({
         ursername: value,
       }).then((user) => {
@@ -94,14 +115,23 @@ router.post(
     check(
       "username",
       "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
-    ).isLength({ min: 8, max: 20 }),
+    ).isLength({
+      min: 8,
+      max: 20
+    }),
 
     check(
       "displayname",
       "تعداد کارتر نام کاربری باید بیشتر از 8 تا 20 کارکتر باشد "
-    ).isLength({ min: 8, max: 20 }),
+    ).isLength({
+      min: 8,
+      max: 20
+    }),
 
-    check("password", "talkjfaldfj a").isLength({ min: 8, max: 20 }),
+    check("password", "talkjfaldfj a").isLength({
+      min: 8,
+      max: 20
+    }),
   ],
   UserCtrl.updateUser
 );
