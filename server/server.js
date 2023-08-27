@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
@@ -38,9 +39,15 @@ app.get("/", (req, res) => {
 });
 
 // ROUTES
+const midBanRoutes = require('./routes/MiddleBannerRoutes');
+const postRoutes = require('./routes/PostRoutes');
+const SliderRoutes = require('./routes/SliderRoutes');
 const UserRoutes = require("./routes/UserRoutes");
 
 // ROUTES MIDDLEWARE
+app.use("/api", midBanRoutes);
+app.use("/api", postRoutes);
+app.use("/api", SliderRoutes);
 app.use("/api", UserRoutes);
 
 const PORT = process.env.PORT;
