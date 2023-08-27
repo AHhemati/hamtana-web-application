@@ -120,10 +120,39 @@ const registerUser = async (req, res) => {
                 const MAIL_MAIL_ADDRESS = process.env.MAIL_MAIL_ADDRESS
 
 
+                const transporter = nodemailer.createTransport({
+                  host: MAIL_HOST,
+                  port: MAIL_PORT,
+                  tls: true,
+                  auth: {
+                    user: MAIL_USER,
+                    pass: MAIL_PASSWORD
+                  }
+                });
 
+                transporter.sendMail({
+                    from: MAIL_MAIN_ADDRESS,
+                    to: newUser.email,
+                    sunject: "اخراز هویت  همتانا ",
+                    html: `<html><head><style>strong{color: rgb(0, 119, 255);}h1{font-size: large;}</style></head><body><h1>کد احراز هویت : <strong>${userActiveCode}</strong></h1></body></html>`
+                  })
+                  .then(d => {
+                    res.status(200).json({
+                      msg: "ثبت نام موقثیت آمیز بود",
+                      auth: token
+                    })
+                  })
+                  .catch(err => {
+                    console.log(err)
+                    res.status(400).json({
+                      msg: "خطا در ثبت نام ",
+                      errorMessage: err,
+                    })
+                  });
 
               })
               .catch(e => {
+                console.log(err)
                 res.status(400).json(err)
               })
           } else {

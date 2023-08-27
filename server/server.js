@@ -14,7 +14,9 @@ const mongoSanitize = require("express-mongo-sanitize");
 const hpp = require("hpp");
 
 // mid
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.json({
+  limit: "50mb"
+}));
 app.use(
   bodyParser.urlencoded({
     limit: "50mb",
